@@ -1,0 +1,93 @@
+[0.000000] (-) TimerEvent: {}
+[0.000179] (lane_assist_package) JobQueued: {'identifier': 'lane_assist_package', 'dependencies': OrderedDict()}
+[0.000515] (lane_assist_package) JobQueued: {'identifier': 'lane_assist_package', 'dependencies': OrderedDict()}
+[0.000931] (lane_assist_package) JobStarted: {'identifier': 'lane_assist_package'}
+[0.019747] (lane_assist_package) JobStarted: {'identifier': 'lane_assist_package'}
+[0.099124] (-) TimerEvent: {}
+[0.199419] (-) TimerEvent: {}
+[0.296594] (lane_assist_package) JobProgress: {'identifier': 'lane_assist_package', 'progress': 'cmake'}
+[0.298552] (lane_assist_package) Command: {'cmd': ['/usr/bin/cmake', '/home/kulka136/av/ros_ws/src/av_project_19/multilane_detection', '-DCATKIN_INSTALL_INTO_PREFIX_ROOT=0', '-DCMAKE_INSTALL_PREFIX=/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package'], 'cwd': '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package', 'env': OrderedDict([('USER', 'kulka136'), ('SSH_AGENT_PID', '3306890'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/kulka136'), ('OLDPWD', '/home/kulka136/av/ros_ws/src'), ('DESKTOP_SESSION', 'xfce'), ('PANEL_GDK_CORE_DEVICE_EVENTS', '0'), ('ROS_PYTHON_VERSION', '3'), ('XRDP_PULSE_SOURCE_SOCKET', 'xrdp_chansrv_audio_in_socket_18'), ('XRDP_PULSE_SINK_SOCKET', 'xrdp_chansrv_audio_out_socket_18'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/31125/bus'), ('COLORTERM', 'truecolor'), ('PULSE_SCRIPT', '/etc/xrdp/pulse/default.pa'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'kulka136'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', 'c49'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/turtlebot-control-01:@/tmp/.ICE-unix/3306865,unix/turtlebot-control-01:/tmp/.ICE-unix/3306865'), ('XDG_MENU_PREFIX', 'xfce-'), ('XRDP_SOCKET_PATH', '/run/xrdp/sockdir'), ('XDG_RUNTIME_DIR', '/run/user/31125'), ('DISPLAY', ':18.0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'XFCE'), ('TILIX_ID', 'ceac5c35-523e-40e0-a59b-f30ed3c52640'), ('SSH_AUTH_SOCK', '/tmp/ssh-XXXXXXSoOaWS/agent.3306889'), ('ROS_DOMAIN_ID', '00'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('UID', '31125'), ('SHELL', '/bin/bash'), ('KRB5CCNAME', 'FILE:/tmp/krb5cc_31125_5oeqX0'), ('XRDP_SESSION', '1'), ('PWD', '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package'), ('XDG_CONFIG_DIRS', '/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.305270] (-) TimerEvent: {}
+[0.334093] (lane_assist_package) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[0.334296] (lane_assist_package) StderrLine: {'line': b'  Compatibility with CMake < 2.8.12 will be removed from a future version of\n'}
+[0.334842] (lane_assist_package) StderrLine: {'line': b'  CMake.\n'}
+[0.335247] (lane_assist_package) StderrLine: {'line': b'\n'}
+[0.335300] (lane_assist_package) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[0.335813] (lane_assist_package) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[0.336272] (lane_assist_package) StderrLine: {'line': b'\n'}
+[0.336327] (lane_assist_package) StderrLine: {'line': b'\x1b[0m\n'}
+[0.405397] (-) TimerEvent: {}
+[0.461118] (lane_assist_package) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.505534] (-) TimerEvent: {}
+[0.582440] (lane_assist_package) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.599978] (lane_assist_package) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.605609] (-) TimerEvent: {}
+[0.705883] (-) TimerEvent: {}
+[0.769029] (lane_assist_package) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.773440] (lane_assist_package) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/lane_assist_package', 'build', '--build-base', '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build', 'install', '--record', '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/kulka136/av/ros_ws/src/av_project_19/lane_assist_package', 'env': {'USER': 'kulka136', 'SSH_AGENT_PID': '3306890', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/kulka136', 'OLDPWD': '/home/kulka136/av/ros_ws/src', 'DESKTOP_SESSION': 'xfce', 'PANEL_GDK_CORE_DEVICE_EVENTS': '0', 'ROS_PYTHON_VERSION': '3', 'XRDP_PULSE_SOURCE_SOCKET': 'xrdp_chansrv_audio_in_socket_18', 'XRDP_PULSE_SINK_SOCKET': 'xrdp_chansrv_audio_out_socket_18', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/31125/bus', 'COLORTERM': 'truecolor', 'PULSE_SCRIPT': '/etc/xrdp/pulse/default.pa', 'ROS_DISTRO': 'humble', 'LOGNAME': 'kulka136', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': 'c49', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/turtlebot-control-01:@/tmp/.ICE-unix/3306865,unix/turtlebot-control-01:/tmp/.ICE-unix/3306865', 'XDG_MENU_PREFIX': 'xfce-', 'XRDP_SOCKET_PATH': '/run/xrdp/sockdir', 'XDG_RUNTIME_DIR': '/run/user/31125', 'DISPLAY': ':18.0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'XFCE', 'TILIX_ID': 'ceac5c35-523e-40e0-a59b-f30ed3c52640', 'SSH_AUTH_SOCK': '/tmp/ssh-XXXXXXSoOaWS/agent.3306889', 'ROS_DOMAIN_ID': '00', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'UID': '31125', 'SHELL': '/bin/bash', 'KRB5CCNAME': 'FILE:/tmp/krb5cc_31125_5oeqX0', 'XRDP_SESSION': '1', 'PWD': '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package', 'XDG_CONFIG_DIRS': '/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share', 'PYTHONPATH': '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[0.781909] (lane_assist_package) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.782424] (lane_assist_package) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.783245] (lane_assist_package) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.797126] (lane_assist_package) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.806013] (-) TimerEvent: {}
+[0.906325] (-) TimerEvent: {}
+[0.969450] (lane_assist_package) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.980890] (lane_assist_package) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.981162] (lane_assist_package) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.981725] (lane_assist_package) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.006444] (-) TimerEvent: {}
+[1.008648] (lane_assist_package) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:10 (find_package):\n'}
+[1.008810] (lane_assist_package) StderrLine: {'line': b'  By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[1.010088] (lane_assist_package) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "catkin", but\n'}
+[1.011488] (lane_assist_package) StderrLine: {'line': b'  CMake did not find one.\n'}
+[1.012067] (lane_assist_package) StderrLine: {'line': b'\n'}
+[1.012151] (lane_assist_package) StderrLine: {'line': b'  Could not find a package configuration file provided by "catkin" with any\n'}
+[1.012734] (lane_assist_package) StderrLine: {'line': b'  of the following names:\n'}
+[1.012821] (lane_assist_package) StderrLine: {'line': b'\n'}
+[1.013329] (lane_assist_package) StderrLine: {'line': b'    catkinConfig.cmake\n'}
+[1.013403] (lane_assist_package) StderrLine: {'line': b'    catkin-config.cmake\n'}
+[1.013834] (lane_assist_package) StderrLine: {'line': b'\n'}
+[1.013908] (lane_assist_package) StderrLine: {'line': b'  Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set\n'}
+[1.014383] (lane_assist_package) StderrLine: {'line': b'  "catkin_DIR" to a directory containing one of the above files.  If "catkin"\n'}
+[1.014461] (lane_assist_package) StderrLine: {'line': b'  provides a separate development package or SDK, be sure it has been\n'}
+[1.016352] (lane_assist_package) StderrLine: {'line': b'  installed.\n'}
+[1.016427] (lane_assist_package) StderrLine: {'line': b'\n'}
+[1.017219] (lane_assist_package) StderrLine: {'line': b'\x1b[0m\n'}
+[1.017699] (lane_assist_package) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.018134] (lane_assist_package) StdoutLine: {'line': b'See also "/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/CMakeFiles/CMakeOutput.log".\n'}
+[1.019451] (lane_assist_package) CommandEnded: {'returncode': 1}
+[1.030041] (lane_assist_package) StdoutLine: {'line': b'running egg_info\n'}
+[1.030957] (lane_assist_package) StdoutLine: {'line': b'creating ../build/lane_assist_package/lane_assist_package.egg-info\n'}
+[1.032591] (lane_assist_package) StdoutLine: {'line': b'writing ../build/lane_assist_package/lane_assist_package.egg-info/PKG-INFO\n'}
+[1.036500] (lane_assist_package) StdoutLine: {'line': b'writing dependency_links to ../build/lane_assist_package/lane_assist_package.egg-info/dependency_links.txt\n'}
+[1.038454] (lane_assist_package) StdoutLine: {'line': b'writing entry points to ../build/lane_assist_package/lane_assist_package.egg-info/entry_points.txt\n'}
+[1.040509] (lane_assist_package) StdoutLine: {'line': b'writing requirements to ../build/lane_assist_package/lane_assist_package.egg-info/requires.txt\n'}
+[1.042391] (lane_assist_package) StdoutLine: {'line': b'writing top-level names to ../build/lane_assist_package/lane_assist_package.egg-info/top_level.txt\n'}
+[1.047324] (lane_assist_package) StdoutLine: {'line': b"writing manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'\n"}
+[1.056209] (lane_assist_package) StdoutLine: {'line': b"reading manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'\n"}
+[1.059325] (lane_assist_package) StdoutLine: {'line': b"writing manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'\n"}
+[1.060722] (lane_assist_package) StdoutLine: {'line': b'running build\n'}
+[1.060866] (lane_assist_package) StdoutLine: {'line': b'running build_py\n'}
+[1.061661] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build\n'}
+[1.062209] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib\n'}
+[1.063183] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package\n'}
+[1.064744] (lane_assist_package) StdoutLine: {'line': b'copying lane_assist_package/__init__.py -> /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package\n'}
+[1.066665] (lane_assist_package) JobEnded: {'identifier': 'lane_assist_package', 'rc': 1}
+[1.068901] (lane_assist_package) StdoutLine: {'line': b'running install\n'}
+[1.068992] (lane_assist_package) StdoutLine: {'line': b'running install_lib\n'}
+[1.069867] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package\n'}
+[1.070952] (lane_assist_package) StdoutLine: {'line': b'copying /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package/__init__.py -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package\n'}
+[1.074123] (lane_assist_package) StdoutLine: {'line': b'byte-compiling /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package/__init__.py to __init__.cpython-310.pyc\n'}
+[1.077987] (lane_assist_package) StdoutLine: {'line': b'running install_data\n'}
+[1.078072] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/share/ament_index\n'}
+[1.078791] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/share/ament_index/resource_index\n'}
+[1.079583] (lane_assist_package) StdoutLine: {'line': b'creating /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/share/ament_index/resource_index/packages\n'}
+[1.080868] (lane_assist_package) StdoutLine: {'line': b'copying resource/lane_assist_package -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/share/ament_index/resource_index/packages\n'}
+[1.083455] (lane_assist_package) StdoutLine: {'line': b'copying package.xml -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/share/lane_assist_package\n'}
+[1.085616] (lane_assist_package) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.087971] (lane_assist_package) StdoutLine: {'line': b'Copying ../build/lane_assist_package/lane_assist_package.egg-info to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package-0.0.0-py3.10.egg-info\n'}
+[1.106522] (-) TimerEvent: {}
+[1.110453] (lane_assist_package) StdoutLine: {'line': b'running install_scripts\n'}
+[1.133298] (lane_assist_package) StdoutLine: {'line': b"writing list of installed files to '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log'\n"}
+[1.157212] (lane_assist_package) JobEnded: {'identifier': 'lane_assist_package', 'rc': 'SIGINT'}
+[1.168138] (-) EventReactorShutdown: {}

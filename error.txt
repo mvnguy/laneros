@@ -1,0 +1,7 @@
+[ERROR] [1733696062.858932983] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+[ERROR] [1733696062.964084782] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+[ERROR] [1733696062.858932983] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+[ERROR] [1733696062.964084782] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+[ERROR] [1733696062.858932983] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+[ERROR] [1733696062.964084782] [lane_regression]: Error processing image: The 'data' field must be of type 'float'
+

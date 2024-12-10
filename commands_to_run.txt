@@ -1,0 +1,13 @@
+## On HPCC ##
+
+colcon build --packages-select lane_assist_package
+
+ros2 run lane_assist_package lane_detection
+ros2 run lane_assist_package lane_assist
+ros2 run lane_assist_package lane_regression
+
+## ROS bag from MSU car:
+ros2 bag play ~av/data/msu_bags/msu_sv_short/
+
+# to keep the video in loop 
+ros2 bag play ~av/data/msu_bags/msu_sv_short/ -r 0.2 -l

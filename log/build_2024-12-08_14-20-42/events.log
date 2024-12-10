@@ -1,0 +1,45 @@
+[0.000000] (-) TimerEvent: {}
+[0.000464] (-) JobUnselected: {'identifier': 'lane_assist_package'}
+[0.000518] (lane_assist_package) JobQueued: {'identifier': 'lane_assist_package', 'dependencies': OrderedDict()}
+[0.000541] (lane_assist_package) JobStarted: {'identifier': 'lane_assist_package'}
+[0.099352] (-) TimerEvent: {}
+[0.199627] (-) TimerEvent: {}
+[0.300357] (-) TimerEvent: {}
+[0.400951] (-) TimerEvent: {}
+[0.501287] (-) TimerEvent: {}
+[0.601651] (-) TimerEvent: {}
+[0.656071] (lane_assist_package) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/lane_assist_package', 'build', '--build-base', '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build', 'install', '--record', '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/kulka136/av/ros_ws/src/av_project_19/lane_assist_package', 'env': {'USER': 'kulka136', 'SSH_AGENT_PID': '3306890', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/kulka136', 'OLDPWD': '/home/kulka136/av/ros_ws/src', 'DESKTOP_SESSION': 'xfce', 'PANEL_GDK_CORE_DEVICE_EVENTS': '0', 'ROS_PYTHON_VERSION': '3', 'XRDP_PULSE_SOURCE_SOCKET': 'xrdp_chansrv_audio_in_socket_18', 'XRDP_PULSE_SINK_SOCKET': 'xrdp_chansrv_audio_out_socket_18', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/31125/bus', 'COLORTERM': 'truecolor', 'PULSE_SCRIPT': '/etc/xrdp/pulse/default.pa', 'COLCON_PREFIX_PATH': '/home/kulka136/av/ros_ws/src/av_project_19/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'kulka136', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': 'c49', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/turtlebot-control-01:@/tmp/.ICE-unix/3306865,unix/turtlebot-control-01:/tmp/.ICE-unix/3306865', 'XDG_MENU_PREFIX': 'xfce-', 'XRDP_SOCKET_PATH': '/run/xrdp/sockdir', 'XDG_RUNTIME_DIR': '/run/user/31125', 'DISPLAY': ':18.0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'XFCE', 'TILIX_ID': 'ceac5c35-523e-40e0-a59b-f30ed3c52640', 'SSH_AUTH_SOCK': '/tmp/ssh-XXXXXXSoOaWS/agent.3306889', 'ROS_DOMAIN_ID': '00', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'UID': '31125', 'SHELL': '/bin/bash', 'KRB5CCNAME': 'FILE:/tmp/krb5cc_31125_5oeqX0', 'XRDP_SESSION': '1', 'PWD': '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package', 'XDG_CONFIG_DIRS': '/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share', 'PYTHONPATH': '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[0.701772] (-) TimerEvent: {}
+[0.802140] (-) TimerEvent: {}
+[0.902607] (-) TimerEvent: {}
+[0.919105] (lane_assist_package) StdoutLine: {'line': b'running egg_info\n'}
+[0.920303] (lane_assist_package) StdoutLine: {'line': b'writing ../build/lane_assist_package/lane_assist_package.egg-info/PKG-INFO\n'}
+[0.922528] (lane_assist_package) StdoutLine: {'line': b'writing dependency_links to ../build/lane_assist_package/lane_assist_package.egg-info/dependency_links.txt\n'}
+[0.923808] (lane_assist_package) StdoutLine: {'line': b'writing entry points to ../build/lane_assist_package/lane_assist_package.egg-info/entry_points.txt\n'}
+[0.925166] (lane_assist_package) StdoutLine: {'line': b'writing requirements to ../build/lane_assist_package/lane_assist_package.egg-info/requires.txt\n'}
+[0.926392] (lane_assist_package) StdoutLine: {'line': b'writing top-level names to ../build/lane_assist_package/lane_assist_package.egg-info/top_level.txt\n'}
+[0.932832] (lane_assist_package) StdoutLine: {'line': b"reading manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'\n"}
+[0.934681] (lane_assist_package) StdoutLine: {'line': b"writing manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'\n"}
+[0.935872] (lane_assist_package) StdoutLine: {'line': b'running build\n'}
+[0.936036] (lane_assist_package) StdoutLine: {'line': b'running build_py\n'}
+[0.937603] (lane_assist_package) StdoutLine: {'line': b'copying lane_assist_package/lane_assist.py -> /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package\n'}
+[0.939898] (lane_assist_package) StdoutLine: {'line': b'copying lane_assist_package/lane_detection.py -> /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package\n'}
+[0.942448] (lane_assist_package) StdoutLine: {'line': b'copying lane_assist_package/lane_regression.py -> /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package\n'}
+[0.944880] (lane_assist_package) StdoutLine: {'line': b'running install\n'}
+[0.945129] (lane_assist_package) StdoutLine: {'line': b'running install_lib\n'}
+[0.947244] (lane_assist_package) StdoutLine: {'line': b'copying /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package/lane_assist.py -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package\n'}
+[0.949821] (lane_assist_package) StdoutLine: {'line': b'copying /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package/lane_detection.py -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package\n'}
+[0.952548] (lane_assist_package) StdoutLine: {'line': b'copying /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build/lib/lane_assist_package/lane_regression.py -> /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package\n'}
+[0.955851] (lane_assist_package) StdoutLine: {'line': b'byte-compiling /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package/lane_assist.py to lane_assist.cpython-310.pyc\n'}
+[0.959102] (lane_assist_package) StdoutLine: {'line': b'byte-compiling /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package/lane_detection.py to lane_detection.cpython-310.pyc\n'}
+[0.962365] (lane_assist_package) StdoutLine: {'line': b'byte-compiling /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package/lane_regression.py to lane_regression.cpython-310.pyc\n'}
+[0.969243] (lane_assist_package) StdoutLine: {'line': b'running install_data\n'}
+[0.969878] (lane_assist_package) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.971257] (lane_assist_package) StdoutLine: {'line': b"removing '/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[0.977681] (lane_assist_package) StdoutLine: {'line': b'Copying ../build/lane_assist_package/lane_assist_package.egg-info to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package-0.0.0-py3.10.egg-info\n'}
+[0.996327] (lane_assist_package) StdoutLine: {'line': b'running install_scripts\n'}
+[1.002670] (-) TimerEvent: {}
+[1.017143] (lane_assist_package) StdoutLine: {'line': b"writing list of installed files to '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log'\n"}
+[1.042817] (lane_assist_package) CommandEnded: {'returncode': 0}
+[1.077345] (lane_assist_package) JobEnded: {'identifier': 'lane_assist_package', 'rc': 0}
+[1.079553] (-) EventReactorShutdown: {}

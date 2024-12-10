@@ -1,123 +1,111 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rclpy
+from rclpy.node import Node
 from std_msgs.msg import Float32
 from sensor_msgs.msg import Image
 import numpy as np
 import cv2
 from cv_bridge import CvBridge
 
-# Initialize global variables
-# Converts ROS image messages to OpenCV images
-bridge = CvBridge()
-# Height and width of the expected input image
-PICTURE_HEIGHT = 480
-PICTURE_WIDTH = 640
-# Center position of the robot in the image
-TRUCK_POS_X = PICTURE_WIDTH // 2  
+class LaneRegressionNode(Node):
+    def __init__(self):
+        super().__init__('lane_regression')
 
-def calculate_lane_center(image):
-    """
-    Detect the left and right lane markings and calculate the lane center.
-    :param image: Input image in OpenCV format
-    :return: Offset from the center of the robot to the lane center
-    """
-    # Step 1: Convert the image to grayscale for simpler processing
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    
-    # Step 2: Apply Gaussian blur to smooth the image and reduce noise
-    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-    
-    # Step 3: Use Canny edge detection to identify strong edges in the image
-    edges = cv2.Canny(blurred, 50, 150)
-    
-    # Step 4: Define a region of interest (ROI) to focus on the road area
-    mask = np.zeros_like(edges)
-    roi_corners = np.array([[(50, PICTURE_HEIGHT), (PICTURE_WIDTH - 50, PICTURE_HEIGHT), 
-                             (PICTURE_WIDTH // 2 + 50, PICTURE_HEIGHT // 2), 
-                             (PICTURE_WIDTH // 2 - 50, PICTURE_HEIGHT // 2)]], dtype=np.int32)
-    cv2.fillPoly(mask, roi_corners, 255)
-    cropped_edges = cv2.bitwise_and(edges, mask)
-    
-    # Step 5: Detect lines in the ROI using Hough Line Transform
-    lines = cv2.HoughLinesP(cropped_edges, rho=1, theta=np.pi/180, threshold=50, minLineLength=50, maxLineGap=150)
-    
-    
-    if lines is not None:
-        # Separate detected lines into left and right based on their slopes
-        left_lines = []
-        right_lines = []
-        
-        # Separate lines into left and right based on slope
-        for line in lines:
-            x1, y1, x2, y2 = line[0]
-            slope = (y2 - y1) / float(x2 - x1 + 1e-6)  # Avoid division by zero
-            # Negative slope indicates left lane
-            if slope < 0:  
-                left_lines.append(line[0])
-            # Positive slope indicates right lane
-            elif slope > 0:  
-                right_lines.append(line[0])
-        
-        # Calculate the average position of left and right lanes
-        def average_position(lines):
-            x_coords = [x1 + x2 for x1, _, x2, _ in lines]
-            return sum(x_coords) / (2 * len(lines)) if lines else None
-        
-        # Calculate the lane center by averaging left and right lane positions
-        left_center = average_position(left_lines)
-        right_center = average_position(right_lines)
-        
-        # Calculate lane center
-        if left_center is not None and right_center is not None:
-            lane_center = (left_center + right_center) / 2
-            # Offset from robot center
-            offset = lane_center - TRUCK_POS_X
-            return offset
-        else:
-            rclpy.logwarn("One of the lanes is not detected.")
-            # Default to no offset if a lane is missing
-            return 0
-    else:
-        rclpy.logwarn("No lanes detected.")
-        # Default to no offset if no lines are detected
-        return 0  
+        # Declare parameters
+        self.declare_parameter('picture_width', 640)
+        self.declare_parameter('picture_height', 480)
+        self.declare_parameter('truck_pos_x', self.get_parameter('picture_width').value // 2)
 
-def image_callback(msg):
-    """
-    ROS callback function for the image topic.
-    :param msg: ROS Image message
-    """
+        # Initialize constants
+        self.PICTURE_WIDTH = self.get_parameter('picture_width').value
+        self.PICTURE_HEIGHT = self.get_parameter('picture_height').value
+        self.TRUCK_POS_X = self.get_parameter('truck_pos_x').value
+
+        # Initialize ROS entities
+        self.publisher = self.create_publisher(Float32, 'lane_center_offset', 10)
+        self.subscription = self.create_subscription(Image, '/camera/image_raw', self.image_callback, 10)
+
+        # Initialize utilities
+        self.bridge = CvBridge()
+        self.offset_history = []  # For smoothing offset
+
+    def image_callback(self, msg):
+        try:
+            # Convert ROS image to OpenCV format
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+
+            # Calculate lane offset
+            offset = self.calculate_lane_center(cv_image)
+            smoothed_offset = self.smooth_offset(offset)
+
+            # Publish the offset
+            self.publisher.publish(Float32(data=smoothed_offset))
+
+            # Display the image (debugging)
+            cv2.imshow("Lane Detection", cv_image)
+            cv2.waitKey(1)
+
+            # Log the offset
+            self.get_logger().info(f"Lane offset: {smoothed_offset}")
+        except Exception as e:
+            self.get_logger().error(f"Error processing image: {e}")
+
+    def calculate_lane_center(self, image):
+        # Lane detection logic (same as your original implementation)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+        edges = cv2.Canny(blurred, 50, 150)
+
+        mask = np.zeros_like(edges)
+        roi_corners = np.array([[
+            (int(0.1 * self.PICTURE_WIDTH), self.PICTURE_HEIGHT),
+            (int(0.9 * self.PICTURE_WIDTH), self.PICTURE_HEIGHT),
+            (int(0.55 * self.PICTURE_WIDTH), int(0.5 * self.PICTURE_HEIGHT)),
+            (int(0.45 * self.PICTURE_WIDTH), int(0.5 * self.PICTURE_HEIGHT))
+        ]], dtype=np.int32)
+        cv2.fillPoly(mask, roi_corners, 255)
+        cropped_edges = cv2.bitwise_and(edges, mask)
+
+        lines = cv2.HoughLinesP(cropped_edges, 1, np.pi/180, 50, minLineLength=50, maxLineGap=150)
+
+        if lines is not None:
+            left_lines, right_lines = [], []
+            for line in lines:
+                x1, y1, x2, y2 = line[0]
+                slope = (y2 - y1) / float(x2 - x1 + 1e-6)
+                if slope < 0:
+                    left_lines.append(line[0])
+                elif slope > 0:
+                    right_lines.append(line[0])
+
+            def average_position(lines):
+                x_coords = [x1 + x2 for x1, _, x2, _ in lines]
+                return sum(x_coords) / (2 * len(lines)) if lines else None
+
+            left_center = average_position(left_lines)
+            right_center = average_position(right_lines)
+
+            if left_center is not None and right_center is not None:
+                lane_center = (left_center + right_center) / 2
+                return lane_center - self.TRUCK_POS_X
+        return 0
+
+    def smooth_offset(self, offset):
+        self.offset_history.append(offset)
+        if len(self.offset_history) > 5:
+            self.offset_history.pop(0)
+        return sum(self.offset_history) / len(self.offset_history)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = LaneRegressionNode()
     try:
-        # Convert ROS image message to OpenCV format
-        cv_image = bridge.imgmsg_to_cv2(msg, "bgr8")
-        
-        # Calculate lane center offset
-        offset = calculate_lane_center(cv_image)
-        
-        # Publish the offset value
-        publish_offset(offset)
-        
-        # Display the processed image for debugging purposes
-        cv2.imshow("Lane Detection", cv_image)
-        cv2.waitKey(1)
-        
-    except Exception as e:
-        rclpy.logerr(f"Error processing image: {e}")
-
-def publish_offset(offset):
-    """
-    Publish the lane center offset.
-    :param offset: Offset value
-    """
-    # Publishes the computed offset to a ROS topic
-    pub = rclpy.Publisher('lane_center_offset', Float32, queue_size=1)
-    pub.publish(Float32(offset))
-
-def main():
-    # Main function for initializing the ROS node and processing images
-    rclpy.init_node('lane_follower', anonymous=True)
-    rclpy.Subscriber('/camera/image_raw', Image, image_callback)
-    rclpy.spin()
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()

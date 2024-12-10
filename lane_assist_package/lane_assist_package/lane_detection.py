@@ -1,55 +1,88 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
-from geometry_msgs.msg import Point
-from lane_keeping_assist.msg import ClusterData
-import os
+from sensor_msgs.msg import Image
+from std_msgs.msg import Float32
+import cv2
+from cv_bridge import CvBridge
 
-class LaneDetectionDummy(Node):
-
+class LaneDetectionNode(Node):
     def __init__(self):
-        super().__init__('lanedetection_dummy')
-        self.publisher = self.create_publisher(ClusterData, 'cluster_data', 10)
-        self.timer = self.create_timer(2.0, self.publish_cluster_data)  # 0.5 Hz
-        self.file_path = "/home/zflab/catkin_ws/src/laneregression/scripts/all_cluster"
+        super().__init__('lane_detection')
 
-    def publish_cluster_data(self):
+        # Subscriber to the camera feed
+        self.subscription = self.create_subscription(Image, '/camera/image_raw', self.image_callback, 10)
+
+        # Publisher for the lane offset
+        self.publisher = self.create_publisher(Float32, 'laneregression_offset', 10)
+
+        # CvBridge for converting ROS images to OpenCV format
+        self.bridge = CvBridge()
+
+    def image_callback(self, msg):
         try:
-            with open(self.file_path, "r") as file_cluster:
-                for line in file_cluster:
-                    all_cluster = ClusterData()
-                    string_cluster = line.split(";")
+            # Convert ROS Image to OpenCV image
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
 
-                    for i in range(len(string_cluster) - 1):
-                        string_points = string_cluster[i].split(",")
+            # Process the image to detect lane offset
+            offset = self.detect_lane(cv_image)
 
-                        all_cluster.size.append(int((len(string_points) - 1) / 2))
+            # Publish the offset
+            offset_msg = Float32()
+            offset_msg.data = float(offset)
+            self.publisher.publish(offset_msg)
 
-                        for j in range(0, len(string_points) - 1, 2):
-                            single_point = Point()
-                            single_point.x = int(string_points[j])
-                            single_point.y = int(string_points[j+1])
-                            single_point.z = 0
-                            all_cluster.points.append(single_point)
-
-                    self.publisher.publish(all_cluster)
-                    self.get_logger().info(f'Published cluster data: {all_cluster.size}')
-
+            self.get_logger().info(f'Lane offset: {offset}')
         except Exception as e:
-            self.get_logger().error(f'Error reading or publishing cluster data: {e}')
+            self.get_logger().error(f'Error processing image: {e}')
+
+    def detect_lane(self, image):
+        """
+        Detect lane markings and calculate the offset.
+
+        Args:
+            image: Input OpenCV image.
+
+        Returns:
+            Offset from the robot's center to the lane center.
+        """
+        # Convert to grayscale
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Apply Gaussian blur
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+
+        # Perform edge detection
+        edges = cv2.Canny(blurred, 50, 150)
+
+        # Define a region of interest (ROI)
+        mask = cv2.rectangle(edges, (0, 300), (640, 480), 255, -1)
+        cropped = cv2.bitwise_and(edges, mask)
+
+        # Perform Hough Line Transform
+        lines = cv2.HoughLinesP(cropped, rho=1, theta=np.pi/180, threshold=50, minLineLength=50, maxLineGap=150)
+
+        if lines is not None:
+            # Average the detected lines and calculate offset
+            x_positions = [(x1 + x2) / 2 for x1, _, x2, _ in lines[:, 0]]
+            lane_center = sum(x_positions) / len(x_positions)
+            offset = lane_center - (image.shape[1] / 2)
+            return offset
+        else:
+            self.get_logger().warn("No lane lines detected.")
+            return 0.0
 
 def main(args=None):
     rclpy.init(args=args)
 
-    lane_detection_dummy = LaneDetectionDummy()
+    lane_detection_node = LaneDetectionNode()
 
     try:
-        rclpy.spin(lane_detection_dummy)
+        rclpy.spin(lane_detection_node)
     except KeyboardInterrupt:
         pass
 
-    lane_detection_dummy.destroy_node()
+    lane_detection_node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

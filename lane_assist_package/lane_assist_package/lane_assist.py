@@ -3,7 +3,6 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
-import socket
 
 # Parameter for P-Controller
 Kp = -4
@@ -34,6 +33,8 @@ class LaneAssistNode(Node):
             self.get_logger().info(f'Steering Angle: {steering_angle}')
 
         except Exception as e:
+            twist = Twist()  # Stop the robot
+            self.publisher.publish(twist)
             self.get_logger().error(f'Error in callback: {e}')
 
 def main(args=None):

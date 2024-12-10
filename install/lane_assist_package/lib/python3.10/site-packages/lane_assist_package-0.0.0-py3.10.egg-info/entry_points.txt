@@ -1,0 +1,5 @@
+[console_scripts]
+lane_assist = lane_assist_package.lane_assist:main
+lane_detection = lane_assist_package.lane_detection:main
+lane_regression = lane_assist_package.lane_regression:main
+

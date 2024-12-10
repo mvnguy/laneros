@@ -1,0 +1,23 @@
+[0.707s] Invoking command in '/home/kulka136/av/ros_ws/src/av_project_19/lane_assist_package': PYTHONPATH=/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/lane_assist_package build --build-base /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build install --record /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log --single-version-externally-managed install_data
+[0.961s] running egg_info
+[0.964s] writing ../build/lane_assist_package/lane_assist_package.egg-info/PKG-INFO
+[0.969s] writing dependency_links to ../build/lane_assist_package/lane_assist_package.egg-info/dependency_links.txt
+[0.976s] writing entry points to ../build/lane_assist_package/lane_assist_package.egg-info/entry_points.txt
+[0.982s] writing requirements to ../build/lane_assist_package/lane_assist_package.egg-info/requires.txt
+[0.985s] writing top-level names to ../build/lane_assist_package/lane_assist_package.egg-info/top_level.txt
+[1.002s] reading manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'
+[1.005s] writing manifest file '../build/lane_assist_package/lane_assist_package.egg-info/SOURCES.txt'
+[1.011s] running build
+[1.012s] running build_py
+[1.019s] running install
+[1.021s] running install_lib
+[1.029s] running install_data
+[1.033s] running install_egg_info
+[1.035s] removing '/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package-0.0.0-py3.10.egg-info' (and everything under it)
+[1.048s] Copying ../build/lane_assist_package/lane_assist_package.egg-info to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages/lane_assist_package-0.0.0-py3.10.egg-info
+[1.075s] running install_scripts
+[1.094s] Installing lane_assist script to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/lane_assist_package
+[1.097s] Installing lane_detection script to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/lane_assist_package
+[1.100s] Installing lane_regression script to /home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/lane_assist_package
+[1.106s] writing list of installed files to '/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log'
+[1.126s] Invoked command in '/home/kulka136/av/ros_ws/src/av_project_19/lane_assist_package' returned '0': PYTHONPATH=/home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/kulka136/av/ros_ws/src/av_project_19/install/lane_assist_package/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/lane_assist_package build --build-base /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/build install --record /home/kulka136/av/ros_ws/src/av_project_19/build/lane_assist_package/install.log --single-version-externally-managed install_data
